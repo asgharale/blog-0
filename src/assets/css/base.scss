@@ -1,0 +1,26 @@
+@import "vars.scss";
+@import "responsive.scss";
+
+@font-face{
+	font-family: "IranSans";
+	src:
+		url("../fonts/IranianSans.ttf") format("truetype"),
+		url("../fonts/IranianSans.otf") format("opentype"),
+		url("../fonts/IranianSans.woff") format("woff"),
+		url("../fonts/IranianSans.woff2") format("woff2");
+}
+@font-face{
+	font-family: "Farhang";
+	src:
+		url("../fonts/Farhang.ttf") format("truetype"),
+		url("../fonts/Farhang.eot") format("embedded-opentype"),
+		url("../fonts/Farhang.woff") format("woff"),
+		url("../fonts/Farhang.woff2") format("woff2");
+}
+*, body, p, h1, h2, h3, h4, h5, h6, a{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "IranSans", "Farhang", sans-serif;
+	text-decoration: none;
+}
