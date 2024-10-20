@@ -1,36 +1,38 @@
 <template>
 <header>
-<nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <strong>
-      <router-link class="navbar-brand" :to="{name: 'home'}">بلاگ 0</router-link>
-    </strong>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          دسته ها
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><router-link class="dropdown-item" to="/">دسته 1</router-link></li>
-            <li><router-link class="dropdown-item" to="/">دسته 2</router-link></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><router-link class="dropdown-item" to="/">دسته 3</router-link></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link active" aria-current="page" :to="{name: 'about'}">درباره</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link active" aria-current="page" :to="{name: 'contact'}">تماس با ما</router-link>
-        </li>
-      </ul>
+  <nav class="container sticky-nav">
+    <div class="row">
+      <div id="brand-name" class="col-2 col-md-6">
+        <h1>بلاگ 0</h1>
+      </div>
+      <div id="mob-menu-btn" class="col-md-3">
+        <button class="md-menu-btn">
+          <span class="menu-ic-bar"></span>
+          <span class="menu-ic-bar"></span>
+          <span class="menu-ic-bar"></span>
+        </button>
+      </div>
+      <div id="nav-menu" class="col-6 md-hide">
+        <ul class="mobile-menu">
+          <li class="menu-item"><a href="#">خانه</a></li>
+          <li class="menu-item"><a href="#">دسته ها</a></li>
+          <li class="menu-item"><a href="#">تماس با ما</a></li>
+          <li class="menu-item"><a href="#">درباره ما</a></li>
+        </ul>
+      </div>
+      <div id="mob-search-btn" class="col-md-3">
+        <button class="md-menu-btn">
+          search
+        </button>
+      </div>
+      <div id="search-bar" class="col-2 col-md-12 md-hide">
+        <form>
+          <input type="text" placeholder="جستجو کنید...">
+          <button>Go</button>
+        </form>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </header>
 </template>
 
@@ -42,6 +44,105 @@ export default{
 }
 </script>
 
-<style type="text/css" scoped>
+<style lang="scss" scoped>
+@import '@/assets/css/vars.scss';
 
+header{
+  padding: 8px 0;
+  background-color: $pri-color;
+  border-radius: 0 0 30px 30px;
+  color: whitesmoke;
+}
+.sticky-nav{
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+#brand-name{
+  text-align: center;
+}
+#nav-menu{
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0 0 4px 0;
+}
+#nav-menu > ul{
+  list-style-type: none;
+  display: flex;
+}
+.menu-item > a{
+  color: whitesmoke;
+  display: inline-block;
+  padding: 0 12px;
+  cursor: pointer;
+  border-radius: 6px!important;
+}
+.menu-item > a:hover{
+  text-decoration: underline;
+}
+.md-menu-btn{
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+  color: whitesmoke;
+}
+#mob-menu-btn > .md-menu-btn{
+  display: none;
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+#mob-search-btn > .md-menu-btn{
+  position: absolute;
+  top: .75rem;
+  left: 1rem;
+}
+.md-menu-btn:hover{
+  cursor: pointer;
+}
+.menu-ic-bar{
+  width: 100%;
+  height: 3px;
+  border-radius: 10px;
+  border: .15rem solid whitesmoke;
+}
+
+@media screen and (max-width: $md) {
+  #mob-menu-btn{
+    order: 1;
+  }
+  #nav-menu > ul{
+    display: none;
+  }
+  #brand-name{
+    order: 2;
+  }
+  #mob-search-btn{
+    order: 3;
+  }
+  #search-bar{
+    display: none;
+    
+  }
+  .md-menu-btn{
+    display: block;
+  }
+  // .mobile-menu{
+    
+  // }
+}
+@media screen and (min-width: $md) {
+  #mob-menu-btn, #mob-search-btn{
+    display: none;
+  }
+}
 </style>
