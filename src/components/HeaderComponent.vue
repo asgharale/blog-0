@@ -1,20 +1,20 @@
 <template>
-<header>
-  <nav class="container sticky-nav">
+<header class="sticky-nav">
+  <nav class="container">
     <div class="row">
       <div id="brand-name" class="col-2 col-md-6">
-        <h1>بلاگ 0</h1>
+        <h1> 
+          <router-link to="/">بلاگ 0</router-link>
+        </h1>
       </div>
       <div id="mob-menu-btn" class="col-md-3">
         <button class="md-menu-btn">
-          <span class="menu-ic-bar"></span>
-          <span class="menu-ic-bar"></span>
-          <span class="menu-ic-bar"></span>
+          <span class="menu-ic-bar"></span><span class="menu-ic-bar"></span><span class="menu-ic-bar"></span>
         </button>
       </div>
       <div id="nav-menu" class="col-6 md-hide">
         <ul class="mobile-menu">
-          <li class="menu-item"><a href="#">خانه</a></li>
+          <li class="menu-item"><router-link to="/">خانه</router-link></li>
           <li class="menu-item"><a href="#">دسته ها</a></li>
           <li class="menu-item"><a href="#">تماس با ما</a></li>
           <li class="menu-item"><a href="#">درباره ما</a></li>
@@ -36,11 +36,15 @@
 </header>
 </template>
 
-<script type="text/javascript">
+<script>
+
 export default{
-    name: "HeaderComponent",
-    components:{
-    }
+  name: "HeaderComponent",
+  components:{
+
+  },
+  methods:{
+  }
 }
 </script>
 
@@ -55,18 +59,21 @@ header{
 }
 .sticky-nav{
   position: sticky;
+  background-color: $pri-color;
   top: 0;
   width: 100%;
-  z-index: 100;
 }
 #brand-name{
   text-align: center;
+}
+#brand-name a{
+  color: whitesmoke;
+  display: inline;
 }
 #nav-menu{
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 0 0 4px 0;
 }
 #nav-menu > ul{
   list-style-type: none;
@@ -75,12 +82,20 @@ header{
 .menu-item > a{
   color: whitesmoke;
   display: inline-block;
-  padding: 0 12px;
   cursor: pointer;
-  border-radius: 6px!important;
+  padding: 4px 10px;
 }
-.menu-item > a:hover{
-  text-decoration: underline;
+.menu-item > a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1.5px;
+    background: $sec-color;
+    transition: width .3s;
+    border-radius: 15%;
+}
+.menu-item:hover > a::after {
+    width: 100%;
 }
 .md-menu-btn{
   border: none;
@@ -89,26 +104,26 @@ header{
   background-color: inherit;
   color: whitesmoke;
 }
-#mob-menu-btn > .md-menu-btn{
-  display: none;
-  position: absolute;
-  top: .75rem;
-  right: 1rem;
-  background-color: inherit;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-}
-#mob-search-btn > .md-menu-btn{
-  position: absolute;
-  top: .75rem;
-  left: 1rem;
-}
-.md-menu-btn:hover{
-  cursor: pointer;
-}
+// #mob-menu-btn > .md-menu-btn{
+//   display: none;
+//   position: absolute;
+//   top: .75rem;
+//   right: 1rem;
+//   background-color: inherit;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   width: 30px;
+//   height: 21px;
+// }
+// #mob-search-btn > .md-menu-btn{
+//   position: absolute;
+//   top: .75rem;
+//   left: 1rem;
+// }
+// .md-menu-btn:hover{
+//   cursor: pointer;
+// }
 .menu-ic-bar{
   width: 100%;
   height: 3px;
@@ -136,9 +151,7 @@ header{
   .md-menu-btn{
     display: block;
   }
-  // .mobile-menu{
-    
-  // }
+
 }
 @media screen and (min-width: $md) {
   #mob-menu-btn, #mob-search-btn{
