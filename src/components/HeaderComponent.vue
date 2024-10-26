@@ -7,7 +7,7 @@
           <router-link to="/">بلاگ 0</router-link>
         </h1>
       </div>
-      <div id="mob-menu-btn" class="col-md-3">
+      <div class="mob-menu-btn col-md-3">
         <button class="md-menu-btn">
           <span class="menu-ic-bar"></span><span class="menu-ic-bar"></span><span class="menu-ic-bar"></span>
         </button>
@@ -20,7 +20,7 @@
           <li class="menu-item"><a href="#">درباره ما</a></li>
         </ul>
       </div>
-      <div id="mob-search-btn" class="col-md-3">
+      <div class="mob-search-btn col-md-3">
         <button class="md-menu-btn">
           search
         </button>
@@ -90,12 +90,45 @@ header{
     display: block;
     width: 0;
     height: 1.5px;
-    background: $sec-color;
+    background: whitesmoke;
     transition: width .3s;
     border-radius: 15%;
 }
 .menu-item:hover > a::after {
     width: 100%;
+}
+#search-bar > form{
+  display: flex;
+  align-items: center;
+  border: 2px solid #007bff;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#search-bar > form > input{
+  padding: 5px 7px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  flex: 1;
+}
+/* Placeholder styling */
+#search-bar > form > input::placeholder {
+  color: #999;
+}
+/* Search button styling */
+#search-bar > form > button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 7px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+/* Button hover effect */
+#search-bar > form > button:hover {
+  background-color: #0056b3; /* Darker blue for hover */
 }
 .md-menu-btn{
   border: none;
@@ -104,26 +137,26 @@ header{
   background-color: inherit;
   color: whitesmoke;
 }
-// #mob-menu-btn > .md-menu-btn{
-//   display: none;
-//   position: absolute;
-//   top: .75rem;
-//   right: 1rem;
-//   background-color: inherit;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   width: 30px;
-//   height: 21px;
-// }
-// #mob-search-btn > .md-menu-btn{
-//   position: absolute;
-//   top: .75rem;
-//   left: 1rem;
-// }
-// .md-menu-btn:hover{
-//   cursor: pointer;
-// }
+.mob-menu-btn > .md-menu-btn{
+  display: none;
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+.mob-search-btn > .md-menu-btn{
+  position: absolute;
+  top: .75rem;
+  left: 1rem;
+}
+.md-menu-btn:hover{
+  cursor: pointer;
+}
 .menu-ic-bar{
   width: 100%;
   height: 3px;
@@ -132,7 +165,7 @@ header{
 }
 
 @media screen and (max-width: $md) {
-  #mob-menu-btn{
+  .mob-menu-btn{
     order: 1;
   }
   #nav-menu > ul{
@@ -141,12 +174,11 @@ header{
   #brand-name{
     order: 2;
   }
-  #mob-search-btn{
+  .mob-search-btn{
     order: 3;
   }
   #search-bar{
     display: none;
-    
   }
   .md-menu-btn{
     display: block;
@@ -154,7 +186,7 @@ header{
 
 }
 @media screen and (min-width: $md) {
-  #mob-menu-btn, #mob-search-btn{
+  .mob-menu-btn, .mob-search-btn{
     display: none;
   }
 }
